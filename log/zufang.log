@@ -1,0 +1,2 @@
+2019-03-12 18:35:54,503 app_schedule.py[line:206] INFO 微信推送定时任务用户id:1
+2019-03-12 18:36:00,008 app_schedule.py[line:87] INFO 当前抓取豆瓣房源的group_id 为：lgzf

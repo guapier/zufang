@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>这里有房 - 实时推送，快人一步</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="{{url_for('static', filename='assets/i/favicon.ico')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/app.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/info.css')}}"/>
+
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">这里有房</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+                data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+                class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li><a href="/">首页</a></li>
+                <li><a href="{{url_for('login')}}" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</a></li>
+                <li><a href="{{url_for('register')}}" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">注册</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="get" id="info">
+    <!--<div align="center" id="loading"><img src="http://qiniu.tomxin.cn/blog/20190103/L0lqKFXdiFrQ.gif" style="height: 30px;" ></div>-->
+    <p> 亲爱的用户 你的任务:【{{city}}- {{keyword}}】</p>
+    <p> 在 {{current_time}} 暂时没有监控到房源</p>
+
+    <div class="remind"> 风险提醒：以下段子来自互联网</div>
+
+</div>
+
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+    <!--列表标题-->
+    <div class="am-list-news-hd am-cf">
+        <!--带更多链接-->
+        <a href="###" class="">
+            <h2>段子列表</h2>
+            <!--<span class="am-list-news-more am-fr"><a>更多</a>> &raquo;</span>-->
+        </a>
+    </div>
+
+    <div class="am-list-news-bd">
+        <ul class="am-list">
+
+
+            <ul class="am-list">
+
+                {% for joke in jokes %}
+                <li><a href="#">{{joke.content}}</a></li>
+                {% endfor %}
+
+            </ul>
+
+
+        </ul>
+    </div>
+
+</div>
+
+
+</body>
+</html>

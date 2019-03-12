@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>这里有房 - 实时推送，快人一步</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="{{url_for('static', filename='assets/i/favicon.ico')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/app.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/info.css')}}"/>
+
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">这里有房</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+                data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+                class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li><a href="/">首页</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="get" id="info">
+    <!--<div align="center" id="loading"><img src="http://qiniu.tomxin.cn/blog/20190103/L0lqKFXdiFrQ.gif" style="height: 30px;" ></div>-->
+    <!--<p>  亲爱的：tomxin7 你的任务:【福州 - 亚太，鼓楼】</p><p> 在 2019.1.30 19.03 监控到以下房源</p>-->
+
+    <div class="remind"> 风险提醒：以下内容来自互联网，未经验证，请自行甄别，谨防受骗</div>
+
+</div>
+
+
+<div class="about">
+    <div class="am-g am-container">
+        <div class="am-u-lg-12">
+
+            <div class="am-g">
+                <div class="am-u-lg-12 am-u-md-12 am-u-sm-12">
+                    <form class="am-form" action="/index/add_task" method="post">
+                        <fieldset>
+
+                            <legend>添加任务</legend>
+
+                            <div class="am-form-group">
+                                <label for="doc-ipt-email-1">任务描述</label>
+                                <input type="text" class="" id="doc-ipt-email-1" placeholder="任务描述" name="desc">
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="keywords">关键词</label>
+                                <input type="text" class="" id="keywords" placeholder="例如 西乡,宝体"
+                                       name="keywords">
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="frequency">推送频率</label>
+                                <input type="text" class="" id="frequency" placeholder="每个多长时间推送一次(时间单位为分钟，至少10分钟)"
+                                       name="frequency">
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="wx_user_id">微信推送id(<a href="https://docs.qq.com/doc/DQ01hQVNDbE51dHli"
+                                                                  target="_blank">如何获取微信推送id<a>)</label>
+                                <input type="text" class="" id="wx_user_id" placeholder="关注微信公众号即可获得" name="wx_user_id">
+                            </div>
+
+
+                            <div class="am-form-group">
+                                <label for="city-select">城市</label>
+                                <select id="city-select" name="city">
+                                    <option>深圳</option>
+                                    <option>上海</option>
+                                    <option>北京</option>
+                                    <option>广州</option>
+                                    <option>杭州</option>
+                                    <option>成都</option>
+                                    <option>武汉</option>
+                                    <option>南京</option>
+                                    <option>重庆</option>
+                                    <option>天津</option>
+                                    <option>苏州</option>
+                                    <option>西安</option>
+                                    <option>郑州</option>
+                                    <option>厦门</option>
+                                    <option>合肥</option>
+
+
+                                </select>
+                                <span class="am-form-caret"></span>
+                            </div>
+
+
+                            <p>
+                                <button type="submit" class="am-btn am-btn-primary">提交</button>
+                            </p>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.cookie.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/amazeui.min.js')}}"></script>
+<!--<script src="{{url_for('static', filename='js/base.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/tomxin.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/index.js')}}"></script>-->
+</body>
+</html>

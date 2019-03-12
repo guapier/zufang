@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>这里有房 - 实时推送，快人一步</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="这里有房,租房平台,豆瓣租房,找房平台"/>
+    <meta name="description" content="这里有房 - 实时推送 - 快人一步 - 主动推送适合你的房间 - 简单生活"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="{{ url_for('static', filename='assets/i/favicon.ico') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/app.css')}}"/>
+
+
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">这里有房</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+                data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+                class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li class="am-active"><a href="/">首页</a></li>
+            </ul>
+
+            <div class="am-topbar-right">
+                <a href="{{url_for('register')}}" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">注册</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="am-g">
+    <div class="am-u-md-6 am-u-sm-centered">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <span>登录</span>
+        <form class="am-form" method="post" action="{{url_for('login')}}">
+            <fieldset class="am-form-set">
+                <input type="text" placeholder="用户名" name="email">
+                <input type="password" placeholder="密码" name="password">
+            </fieldset>
+            <button type="submit" class="am-btn am-btn-primary am-btn-block">登录</button>
+        </form>
+    </div>
+</div>
+
+<!--<footer class="footer">-->
+<!--<p>这里有房|简单生活　　　　<span class="divider"></span><a style="color: #888888" href="http://www.miitbeian.gov.cn/" target="_blank">桂ICP备17008124号-3 </a></p>-->
+
+<!--</footer>-->
+<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.cookie.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/amazeui.min.js')}}"></script>
+<!--<script src="{{url_for('static', filename='js/base.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/tomxin.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/index.js')}}"></script>-->
+
+</body>
+</html>

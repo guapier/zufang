@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>这里有房 - 实时推送，快人一步</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="{{url_for('static', filename='assets/i/favicon.ico')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/amazeui.min.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/app.css')}}"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/info.css')}}"/>
+
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">这里有房</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+                data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+                class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li><a href="/">首页</a></li>
+                <!--<li class="am-active"><a href="#">信息</a></li>-->
+            </ul>
+            <div class="am-topbar-right">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li><a href="#">{{current_user.username}}</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="get" id="info">
+    <!--<div align="center" id="loading"><img src="http://qiniu.tomxin.cn/blog/20190103/L0lqKFXdiFrQ.gif" style="height: 30px;" ></div>-->
+    <!--<p>  亲爱的：tomxin7 你的任务:【福州 - 亚太，鼓楼】</p><p> 在 2019.1.30 19.03 监控到以下房源</p>-->
+
+    <div class="remind"> 风险提醒：以下内容来自互联网，未经验证，请自行甄别，谨防受骗</div>
+
+</div>
+
+
+<div class="about">
+    <div class="am-g am-container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <div class="am-u-lg-12">
+            <a href="/index/add_task" class="am-btn am-btn-primary">添加新任务</a>
+            <div class="am-g">
+                <div class="am-u-lg-12 am-u-md-12 am-u-sm-12">
+
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <thead>
+                        <tr>
+                            <th>任务名称</th>
+                            <th>任务id</th>
+                            <th>更新频率</th>
+                            <th>关键词</th>
+                            <th>城市</th>
+                            <th>推送用户id</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for task in task_list %}
+                        <tr>
+
+                            <td> {{ task.desc }}</td>
+                            <td> {{ task.job_id }}</td>
+                            <td> {{ task.frequency }}</td>
+                            <td> {{ task.keywords }}</td>
+                            <td> {{ task.city }}</td>
+                            <td> {{ task.wx_user_id }}</td>
+                            <td>
+                                {% if task.status == '0' %}
+                                <div class="am-btn-group">
+                                    <button class="am-btn am-btn-danger">已暂停</button>
+                                </div>
+                                {% endif %}
+                                {% if task.status == '1' %}
+                                <div class="am-btn-group">
+                                    <button class="am-btn am-btn-primary">已启动</button>
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td>
+
+
+                                {% if task.status == '0' %}
+                                <div class="am-btn-group">
+                                    <a href="/index/task_resume?job_id={{task.job_id}}"
+                                       class="am-btn am-btn-primary">启动</a>
+                                </div>
+                                {% endif %}
+
+                                {% if task.status == '1' %}
+                                <div class="am-btn-group">
+                                    <a class="am-btn am-btn-danger"
+                                       href="/index/task_stop?job_id={{task.job_id}}">暂停</a>
+                                </div>
+                                {% endif %}
+
+                            </td>
+
+
+                        </tr>
+
+
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/jquery.cookie.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/amazeui.min.js')}}"></script>
+<!--<script src="{{url_for('static', filename='js/base.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/tomxin.js')}}"></script>-->
+<!--<script src="{{url_for('static', filename='js/index.js')}}"></script>-->
+</body>
+</html>
